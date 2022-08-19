@@ -15,15 +15,15 @@ def rndm(request):
 def search(request):
     entries = util.list_entries()
     query_dict = request.GET
-    query = query_dict.get("q")
+    query = (query_dict.get("q")).lower()
     entry_exist=[]
 
     for entry in entries:
-        if query == entry:
-            return redirect(f"/wiki/{query}")
+        if query == entry.lower():
+            return redirect(f"/wiki/{entry}")
     
     for entry in entries:
-        if query in entry:
+        if query in entry.lower():
             entry_exist += [entry]
     
-    return (request, "encyclopedia/search.html", {"entries" : entry_exist})
+    return render(request, "encyclopedia/search.html", {"entries" : entry_exist})
