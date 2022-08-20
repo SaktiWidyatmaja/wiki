@@ -7,8 +7,10 @@ from markdown2 import Markdown
 
 def title(request, title) :
     return render(request, "wiki_entry/title.html", {
-        "title" : title, "entry": (Markdown().convert((util.get_entry(title)))).replace('"','')
+        "title" : title, "entry": (Markdown().convert((util.get_entry(title))))
     })
 
-def index(request):
-    return render(request, "wiki_entry/index.html")
+def edit(request, title):
+    return render(request, "wiki_entry/edit.html", {
+        "title":title, "entry" : (util.get_entry(title)).split("\n",1)[1]
+    })
