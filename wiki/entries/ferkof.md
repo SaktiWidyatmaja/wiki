@@ -1,3 +1,0 @@
-# ferkof
-
-vsijdifjvd
