@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} 
+    Edit Page
+{% endblock %}
+
+{% block body %}
+    <h1> Edit Page </h1>
+    
+    <br>
+    <form action = "/save/">
+        <h3>Page content</h3>
+        <textarea name="wiki_content" rows="10" style="height:auto; position:flex">{{entry|safe}}</textarea>
+        <div style="margin:10px">
+            <input type="hidden" name="wiki_title" value="{{title}}">
+            <input type="submit" value="Save">
+        </div>
+    </form>
+
+{% endblock %}
